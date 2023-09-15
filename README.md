@@ -1,5 +1,5 @@
-# FoodShare-Connect
-FoodShare Connect is a web application built with the MERN (MongoDB, Express.js, React, Node.js) stack. Its primary goal is to facilitate the connection between restaurants and charity homes, ultimately aiming to reduce food waste and combat global hunger. This README file serves as a comprehensive guide to set up, run, and contribute to the FoodShare Connect project.
+# LetShare
+LetShare is a web application built with the MERN (MongoDB, Express.js, React, and Node.js) stack. Its primary goal is to facilitate the connection between restaurants and charity homes, ultimately aiming to reduce food waste and combat global hunger. This README file serves as a comprehensive guide to setting up, running, and contributing to the LetShare project.
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ FoodShare Connect is a web application built with the MERN (MongoDB, Express.js,
 
 ## Introduction
 
-In many parts of the world, a significant amount of food goes to waste while many people are still suffering from hunger. FoodShare Connect aims to bridge this gap by providing a platform for restaurants to donate excess food to charity homes efficiently. This web app allows restaurants to list available surplus food items, and charity homes can easily discover and request donations. It helps restaurants reduce food waste, and charity homes ensure that their residents are well-fed.
+In many parts of the world, a significant amount of food goes to waste, while many people are still suffering from hunger. FoodShare Connect aims to bridge this gap by providing a platform for restaurants to efficiently donate excess food to charity homes. This web app allows restaurants to list available surplus food items, and charity homes can easily discover and request donations. It helps restaurants reduce food waste, and charity homes ensure that their residents are well-fed.
 
 ## Features
 
@@ -26,7 +26,7 @@ FoodShare Connect comes with several key features, including:
 - **Donation Requests:** Charity homes can request food donations from restaurants.
 - **Real-time Messaging:** Secure messaging system for restaurants and charity homes to communicate about donations.
 - **Search and Filter:** Users can search for specific food items and filter results based on various criteria.
-- **Dashboard:** Interactive dashboards for both restaurants and charity homes to manage their activities.
+- **Dashboard:** Interactive dashboards for both restaurants and charity homes to manage their activities
 
 ## Prerequisites
 
@@ -45,7 +45,7 @@ Follow these steps to set up FoodShare Connect:
    ```bash
    git clone https://github.com/yourusername/foodshare-connect.git
    ```
-2. Cd FoodShare-Connect
+2. Cd LetShare
 
 3. Install the server dependencies:
   ``` cd server
@@ -60,7 +60,7 @@ npm start
 5. Access the application in your web browser at http://localhost:3000.
 
 ## Contributing
-We welcome contributions to FoodShare Connect. To contribute, follow these steps:
+We welcome contributions to LetShare. To contribute, follow these steps:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix:
