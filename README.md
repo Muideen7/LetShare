@@ -81,7 +81,7 @@ git push origin feature-name
 7. Ensure your pull request follows our code of conduct and coding guidelines.
 
 ## License
-FoodShare Connect is licensed under the MIT License. See the LICENSE file for more details.
+LetShare is licensed under the MIT License. See the LICENSE file for more details.
 
 Thank you for your interest in FoodShare Connect! We hope this project can have a positive impact in reducing food waste 
 and fighting global hunger. If you have any questions or encounter issues, please feel free to contact us or open an issue in the repository.
