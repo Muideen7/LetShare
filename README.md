@@ -13,7 +13,7 @@ LetShare is a web application built with the MERN (MongoDB, Express.js, React, a
 
 ## Introduction
 
-In many parts of the world, a significant amount of food goes to waste, while many people are still suffering from hunger. FoodShare Connect aims to bridge this gap by providing a platform for restaurants to efficiently donate excess food to charity homes. This web app allows restaurants to list available surplus food items, and charity homes can easily discover and request donations. It helps restaurants reduce food waste, and charity homes ensure that their residents are well-fed.
+In many parts of the world, a significant amount of food goes to waste, while many people are still suffering from hunger, LetShare aims to bridge this gap by providing a platform for restaurants to efficiently donate excess food to charity homes. This web app allows restaurants to list available surplus food items, and charity homes can easily discover and request donations. It helps restaurants reduce food waste, and charity homes ensure that their residents are well-fed.
 
 ## Features
 
