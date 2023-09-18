@@ -1,4 +1,4 @@
-export const programs_shopper = {
+export const partner = {
   logo: "LetShare",
   slogan: "PARTNER WITH LetShare",
   arr: [
