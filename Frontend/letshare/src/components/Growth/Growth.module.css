@@ -6,7 +6,7 @@
 .growthHeading {
   text-align: center;
   font-size: 1.8rem;
-  width: 40%;
+  width: 100%;
   text-align: center;
   margin: 15px;
 }
@@ -17,7 +17,7 @@
 
 .growthImg img {
   width: 100%;
-  max-height: 450px;
+  max-height: 450px; /* Restore auto height for images */
   object-fit: cover;
   border-radius: 0.5rem;
 }
@@ -28,16 +28,16 @@
 
 .growthList {
   width: 100%;
-  height: 20%;
-  align-items: flex-start;
+  display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .growthDiv {
   flex-direction: column;
   padding: 20px;
-  margin: 0 5px;
-  height: 100%;
+  margin: 10px;
+  width: calc(25% - 20px); /* Adjusted card width for equal sizing and margin spacing */
   background: #f6f7f8;
   border-radius: 0.5rem;
 }
@@ -45,30 +45,33 @@
 .growthField {
   font-size: 1.8rem;
   font-weight: 600;
-  padding: 0 40px 0 10px;
+  padding: 10px;
 }
 
 .growthDes {
   font-size: 1.2rem;
   color: rgba(52, 53, 56, 0.6);
-  padding: 10px 32.5px 10px 10px;
+  padding: 10px;
 }
 
 @media (max-width: 1200px) {
   .growthHeading {
-    width: 50%;
+    width: 100%;
   }
 
   .growthWrapperInner {
     width: 90%;
   }
+
   .growthList {
     flex-direction: column;
   }
+
   .growthDiv {
-    width: 100%;
-    margin: 5px 0;
+    width: calc(50% - 20px); /* Adjusted card width for equal sizing and margin spacing */
+    margin: 10px 0;
   }
+
   .growthDes {
     font-size: 1rem;
   }
@@ -76,13 +79,13 @@
 
 @media (max-width: 900px) {
   .growthHeading {
-    width: 75%;
     font-size: 1.5rem;
   }
 
   .growthDes {
     display: none;
   }
+
   .open {
     display: flex;
   }
@@ -92,19 +95,21 @@
   .img1 {
     display: none;
   }
+
   .img2 {
     display: flex;
   }
+
   .growthImg img {
-    height: 100%;
+    height: auto;
   }
 }
 
 @media (max-width: 500px) {
   .growthHeading {
-    width: 90%;
     font-size: 1.25rem;
   }
+
   .growthField {
     font-size: 1.5rem;
   }

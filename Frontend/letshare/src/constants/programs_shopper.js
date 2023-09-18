@@ -3,16 +3,16 @@ export const programs_shopper = {
   slogan: "PARTNER WITH LetShare",
   arr: [
     {
-      title: "Join LetShare",
+      title: "Get Involved",
       body: [
-        "Afiliate",
+        "Volunteer",
         "Sponsor",
-        "User",
-        "NGOs"
+        "Partner",
+        "Donate"
       ],
     },
     {
-      title: "Top States",
+      title: "Featured Locations",
       body: [
         "Lagos",
         "Abuja",
@@ -22,11 +22,11 @@ export const programs_shopper = {
     },
   
     {
-      title: "Contact Us",
+      title: "Contact",
       body: [
-        "Help",
-        "Contact",
-        "Email",
+        "Help Center",
+        "Contact Information",
+        "Email Support",
         "Phone"
       ],
     },
