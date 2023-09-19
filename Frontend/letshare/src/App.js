@@ -18,7 +18,7 @@ import { partner } from "./constants/partner";
 // Import new components
 import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
-import Dashboard from "./components/Dashboard/Dashboard";
+// import Dashboard from "./components/Dashboard/Dashboard";
 
 const App = () => {
   const [hamActive, setHamActive] = useState(false);
@@ -39,7 +39,7 @@ const App = () => {
           {/* Add routes for signup, login, and dashboard */}
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/dashboard" component={Dashboard} />
+          {/* <Route path="/dashboard" component={Dashboard} /> */}
         </Switch>
         <Footer />
       </div>
