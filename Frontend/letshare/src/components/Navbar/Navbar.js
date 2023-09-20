@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 const Navbar = ({ hamActive, setHamActive }) => {
-  const logo ="LetShare";
+  const logo = "LetShare";
   const handleClick = () => {
     setHamActive(!hamActive);
   };
@@ -21,25 +22,28 @@ const Navbar = ({ hamActive, setHamActive }) => {
         </div>
         <div className={`${styles.navRight} center`}>
           <div className={styles.navLinksWrapper}>
-            <a href="/" className={`${styles.nav} center`}>
-             HOME
-            </a>
-            <a href="/" className={`${styles.nav} center`}>
+            <Link to="/" className={`${styles.nav} center`}>
+              HOME
+            </Link>
+            <Link to="/about" className={`${styles.nav} center`}>
               ABOUT
-            </a>
-            <a href="/" className={`${styles.nav} center`}>
+            </Link>
+            <Link to="/services" className={`${styles.nav} center`}>
               SERVICES
-            </a>
+            </Link>
           </div>
           <div>
-            <a href="/" className={styles.login}>
+            <Link to="/login" className={styles.login}>
               Log in
-            </a>
-            <button className={styles.signup}>Sign Up</button>
+            </Link>
+            <Link to="/signup" className={styles.signup}>
+              Sign Up
+            </Link>
           </div>
         </div>
       </div>
     </nav>
   );
 };
+
 export default Navbar;

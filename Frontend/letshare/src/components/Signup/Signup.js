@@ -1,12 +1,13 @@
-// Signup.js
-
 import React, { useState } from "react";
-import "./Signup.module.css"; // Import your CSS file
+import styles from "./Signup.module.css"; // Import your CSS module
 
 const Signup = () => {
   const [userType, setUserType] = useState("user");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [website, setWebsite] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -17,18 +18,24 @@ const Signup = () => {
     console.log("User Type:", userType);
     console.log("Email:", email);
     console.log("Password:", password);
+    console.log("Company Name:", companyName);
+    console.log("Website:", website);
+    console.log("Phone Number:", phoneNumber);
 
     // Reset the form fields
     setUserType("user");
     setEmail("");
     setPassword("");
+    setCompanyName("");
+    setWebsite("");
+    setPhoneNumber("");
   };
 
   return (
-    <div className="signup-container">
+    <div className={styles["signup-container"]}>
       <h2>Create Your Account</h2>
       <form onSubmit={handleSignup}>
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>User Type</label>
           <select
             value={userType}
@@ -38,7 +45,7 @@ const Signup = () => {
             <option value="business">Business</option>
           </select>
         </div>
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>Email</label>
           <input
             type="email"
@@ -47,7 +54,7 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>Password</label>
           <input
             type="password"
@@ -56,11 +63,42 @@ const Signup = () => {
             required
           />
         </div>
+        {userType === "business" && (
+          <>
+            <div className={styles["form-group"]}>
+              <label>Company Name</label>
+              <input
+                type="text"
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                required
+              />
+            </div>
+            <div className={styles["form-group"]}>
+              <label>Website</label>
+              <input
+                type="text"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                required
+              />
+            </div>
+            <div className={styles["form-group"]}>
+              <label>Phone Number</label>
+              <input
+                type="tel"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                required
+              />
+            </div>
+          </>
+        )}
         <button type="submit">Sign Up</button>
       </form>
-      <div className="oauth-buttons">
-        <button className="google">Sign Up with Google</button>
-        <button className="icloud">Sign Up with iCloud</button>
+      <div className={styles["oauth-buttons"]}>
+        <button className={styles.google}>Sign Up with Google</button>
+        <button className={styles.icloud}>Sign Up with iCloud</button>
       </div>
     </div>
   );
