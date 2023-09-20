@@ -17,7 +17,7 @@ In many parts of the world, a significant amount of food goes to waste, while ma
 
 ## Features
 
-FoodShare Connect comes with several key features, including:
+LetShare comes with several key features, including:
 
 - **User Authentication:** Secure user registration and login system.
 - **Restaurant Profiles:** Restaurants can create and manage their profiles, including information about their food items and availability.
@@ -43,19 +43,19 @@ Follow these steps to set up FoodShare Connect:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/foodshare-connect.git
+   git clone https://github.com/yourusername/LetShare.git
    ```
 2. Cd LetShare
 
 3. Install the server dependencies:
   ``` cd server
-npm install
+      yarn install
 ```
 
 4. Start the client:
 ```
-cd ../client
-npm start
+     cd ../client
+     yarn start
 ```
 5. Access the application in your web browser at http://localhost:3000.
 
