@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // Components import
 import Navbar from "./components/Navbar/Navbar";
@@ -18,7 +18,7 @@ import { partner } from "./constants/partner";
 // Import new components
 import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
-import Dashboard from "./components/Dashboard/Dashboard";
+// import Dashboard from "./components/Dashboard/Dashboard";
 
 const App = () => {
   const [hamActive, setHamActive] = useState(false);
@@ -28,19 +28,19 @@ const App = () => {
       <div className="App">
         <Navbar hamActive={hamActive} setHamActive={setHamActive} />
         <NavbarResponsive hamActive={hamActive} />
-        <Switch>
-          <Route exact path="/" component={Hero} />
-          <Route path="/features" component={Features} />
-          <Route path="/growth" component={Growth} />
-          <Route path="/questions" component={Questions} />
-          <Route path="/programs/user" render={() => <Programs programs={programs_user} />} />
-          <Route path="/programs/shopper" render={() => <Programs programs={partner} />} />
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/growth" element={<Growth />} />
+          <Route path="/questions" element={<Questions />} />
+          <Route path="/programs/user" element={<Programs programs={programs_user} />} />
+          <Route path="/programs/shopper" element={<Programs programs={partner} />} />
 
           {/* Add routes for signup, login, and dashboard */}
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/dashboard" component={Dashboard} />
-        </Switch>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        </Routes>
         <Footer />
       </div>
     </Router>
