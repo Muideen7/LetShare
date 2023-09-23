@@ -18,7 +18,7 @@ import { partner } from "./constants/partner";
 // Import new components
 import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
-// import Dashboard from "./components/Dashboard/Dashboard";
+// import Dashboard from "./components/Dashboard/Dashopenssl.board";
 
 const App = () => {
   const [hamActive, setHamActive] = useState(false);
