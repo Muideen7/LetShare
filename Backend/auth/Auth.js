@@ -12,7 +12,7 @@ const createToken = (Model) => {
 const verifyToken = (req, res, next) => {
   if (req.cookies && req.cookies['access-token']) {
     const accessToken = req.cookies['access-token'];
-    if (!accessToken) { res.status(401).json({ error: 'User is not authenticated' }); }
+    if (!accessToken) { res.status(401).json({ error: 'Not authenticated' }); }
     try {
       const payload = verify(accessToken, process.env.SECRET);
       if (payload) {

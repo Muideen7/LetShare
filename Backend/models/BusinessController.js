@@ -1,5 +1,6 @@
 import dbClient from '../storage/db';
 const bcrypt = require('bcrypt');
+const { ObjectId } = require('mongodb');
 
 class BusinessController {
     static async newBusiness(req, res) {
@@ -34,6 +35,24 @@ class BusinessController {
             }
         } catch(err) {
             console.log(err);
+        }
+    }
+    static async getBusiness(req, res) {
+        // get a Business
+        const businessId = req.ModelId // get businessId from request object
+        try {
+            const Business = await dbClient.db.collection('Business').aggregate([
+                {
+                    $match: { _id: new ObjectId(businessId) }
+                },
+                {
+                    $project: { password: 0} // ignore password in loaded object
+                }
+            ]).toArray()
+            res.status(200).json(Business)
+
+        } catch(err) {
+            console.log(err)
         }
     }
 }

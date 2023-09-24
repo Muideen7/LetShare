@@ -39,6 +39,23 @@ class UserController {
         console.log(err);
     }
   }
+  static async getUser(req, res) {
+    // get a User
+    const UserId = req.ModelId
+    try {
+        const User = await dbClient.db.collection('User').aggregate([
+            {
+                $match: { _id: new ObjectId(UserId) }
+            },
+            {
+                $project: {password: 0}
+            }
+        ]).toArray();
+        res.status(200).json(User)
+    } catch(err) {
+        console.log(err)
+    }
+  }
 }
 
 module.exports = UserController;

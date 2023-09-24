@@ -59,7 +59,7 @@ class AuthController {
                 res.status(200).json({message: 'Business Login Successful'})
             }
         } else {
-            // User login failed business login
+            // User login on failed business login
             const pwdMatch = bcrypt.compare(password, User.password)
                 if (!pwdMatch) {
                 res.status(401).json({ error: 'Incorrect password' });
