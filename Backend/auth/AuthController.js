@@ -1,4 +1,3 @@
-/* eslint-disable */
 /*
     Module to handle Authentication for business or user,
     login, password change
@@ -9,44 +8,21 @@
 const bcrypt = require('bcrypt');
 const dbClient = require('../storage/db');
 const { createToken } = require('./Auth');
+import BusinessController from '../models/BusinessController';
+import UserController from '../models/UserController';
 
 class AuthController {
   static async register(req, res) {
-    const { first_name, last_name, email, password } = req.body;
-    if (!first_name) {
-        res.status(400).json({error: 'first name missing'})
+    if (!req.body) {
+        res.status(400).json({error: 'Missing Form Data'})
     }
-    if (!last_name) {
-        res.status(400).json({error: 'last name missing'})
-    }
-    if (!email) {
-        res.status(400).json({error: 'email missing'})
-    }
-    if(!password) {
-        res.status(400).json({error: 'password missing'})
-    }
+    const formData = req.body;
+    if (formData.hasOwnProperty('businessName') && formData.hasOwnProperty('category')) {
 
-    const collection = dbClient.db.collection('Users');
-    try {
-        const existUser = await collection.findOne({ email });
-        bcrypt.hash(password, 10).then((_hash) => {
-            if(existUser){
-                res.status(400).json({error: 'Email already exists'})
-            }
-            if(!existUser) {
-                const newUser = {
-                    first_name,
-                    last_name,
-                    email,
-                    password: _hash
-                }
-                collection.insertOne(newUser);
-                res.json({ message: 'Signup Sucessful' }).status(200);
-            }
-        });
+        BusinessController.newBusiness(req, res) // Business registration
+    } else {
 
-    } catch(err) {
-        req.status(400).json({error: err})
+        UserController.newUser(req, res) // User registration
     }
  }
 
@@ -60,27 +36,44 @@ class AuthController {
         res.status(400).json({error: 'password missing'})
     }
     try {
-        const collection = dbClient.db.collection('Users')
+        // attempt user login
+        let collection = dbClient.db.collection('User')
         const User = await collection.findOne({ email });
         if (!User) {
-        res.status(404).json({ error: 'Email doesn\'t exist' });
-        }
-        if (User) {
-        bcrypt.compare(password, User.password).then((match) => {
-            if (!match) {
-            res.status(401).json({ error: 'Wrong password' });
+            // attempt business login on User failed login
+            collection = dbClient.db.collection('Business');
+            const Business = await collection.findOne({ email })
+            if (!Business) {
+                res.status(404).json({error: 'Email not found'})
             } else {
-            const accessToken = createToken(User);
-            res.cookie('access-token', accessToken, {
-                maxAge: 60 * 60 * 24 * 30 * 1000,
-                httpOnly: true
-            });
-            res.status(200).json({ message: 'Login Successful'});
+                const pwdMatch = await bcrypt.compare(password, Business.password)
+                if (!pwdMatch) {
+                    res.status(401).json({error: 'Incorrect Password'})
+                } else {
+                    const accessToken = createToken(Business);
+                    res.cookie('access-token', accessToken, {
+                        maxAge: 60 * 60 * 24 * 30 * 1000,
+                        httpOnly: true
+                    });
+                }
+                res.status(200).json({message: 'Business Login Successful'})
             }
-        });
-        }
-    } catch(err) {
-        console.log(err)
+        } else {
+            // User login failed business login
+            const pwdMatch = bcrypt.compare(password, User.password)
+                if (!pwdMatch) {
+                res.status(401).json({ error: 'Incorrect password' });
+                } else {
+                const accessToken = createToken(User);
+                res.cookie('access-token', accessToken, {
+                    maxAge: 60 * 60 * 24 * 30 * 1000,
+                    httpOnly: true
+                });
+                res.status(200).json({ message: 'User Login Successful'});
+                }
+            }
+        } catch(err) {
+            console.log(err)
     }
  }
  // implement logout method

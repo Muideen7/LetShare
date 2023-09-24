@@ -3,8 +3,8 @@ const { sign, verify } = require('jsonwebtoken');
 require('dotenv').config();
 
 // create jwt
-const createToken = (user) => {
-  const accessToken = sign({ id: user._id }, process.env.SECRET);
+const createToken = (Model) => {
+  const accessToken = sign({ id: Model._id }, process.env.SECRET);
   return accessToken;
 };
 
@@ -17,8 +17,7 @@ const verifyToken = (req, res, next) => {
       const payload = verify(accessToken, process.env.SECRET);
       if (payload) {
         req.authenticated = true;
-        req.userId = payload.id // set user id in req object for the next middleware
-        console.log('hello')
+        req.ModelId = payload.id // set Model id in req object for the next middleware
         next()
       }
     } catch (err) {
