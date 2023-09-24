@@ -6,7 +6,7 @@ const uri = process.env.MONGODB_CONNECTION_STRING;
 class DBClient {
   constructor() {
     // store your connection string in your env to avoid conflicts
-    this.client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    this.client = new MongoClient(uri);
     try {
       this.client.connect();
       console.log('DATABASE CONNECTED SUCESSFULLY');

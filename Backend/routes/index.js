@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 const router = express.Router();
 const UserController = require('../models/UserController');
 const AuthController = require('../auth/AuthController');
-const { verifyToken } = require('../Auth');
+const { verifyToken } = require('../auth/Auth');
 
 router.use(cors());
 router.use(express.json());
