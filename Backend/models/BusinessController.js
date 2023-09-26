@@ -14,26 +14,32 @@ class BusinessController {
         if (!password) {res.status(400).json({error: 'Password missing'})};
         if (!category) {res.status(400).json({error: 'Category missing'})};
         if (!email) {res.status(400).json({error: 'Email missing'})}
-        const collection = dbClient.db.collection('Business');
+        const businessCollection = dbClient.db.collection('Business');
         try {
-            const existingBusiness = await collection.findOne({ email })
-            if (existingBusiness) {
-                res.status(400).json({error: 'Business already exists'})
-            } else {
-                const passwordHash = await bcrypt.hash(password, 10) // hash password
-                const newBusiness = {
-                    businessName,
-                    website,
-                    phoneNumber,
-                    city,
-                    email,
-                    category,
-                    password: passwordHash
-                }
-                await collection.insertOne(newBusiness); // save business in DB
+            const existingBusiness = await businessCollection.findOne({ email })
+            if (!existingBusiness) {
+                const userCollection = dbClient.db.collection('User')
+                const existingUser = await userCollection.findOne({ email })
+                if (existingUser) {
+                    res.status(400).json({error: 'Email already exists'})
+                } else {
+                    const passwordHash = await bcrypt.hash(password, 10) // hash password
+                    const newBusiness = {
+                        businessName,
+                        website,
+                        phoneNumber,
+                        city,
+                        email,
+                        category,
+                        password: passwordHash
+                    }
+                await businessCollection.insertOne(newBusiness); // save business in DB
                 res.status(201).json({message: 'Business Successfully Created'});
+                }
+            } else {
+                res.status(400).json({error: "Email already exists"})
             }
-        } catch(err) {
+       } catch(err) {
             console.log(err);
         }
     }

@@ -18,23 +18,32 @@ class UserController {
     if (!phoneNumber) {res.status(400).json({error: 'Phone Number missing'})}
     if (!email) { res.status(400).json({error: 'Email missing'})}
     if (!password) {res.status(400).json({error: 'Password missing'})}
-    const collection = dbClient.db.collection('User')
+    const userCollection = dbClient.db.collection('User')
     try {
-        const existingUser = await collection.findOne({ email });
-        if (existingUser) {
-            res.status(400).json({message: 'Email already exists'})
-        } else {
-            const passwordHash = await bcrypt.hash(password, 10); // hash user password
-            const newUser = {
-                firstName,
-                lastName,
-                password: passwordHash,
-                email,
-                phoneNumber
+        // check User collection if email exists
+        const existingUser = await userCollection.findOne({ email });
+        if (!existingUser) {
+            // check Business collection if email exists
+            const businessCollection = dbClient.db.collection('Business');
+            const existingBusiness = await businessCollection.findOne({ email });
+            if (existingBusiness) {
+                res.status(400).json({message: 'Email already exists'})
+            } else {
+                const passwordHash = await bcrypt.hash(password, 10); // hash user password
+                const newUser = {
+                    firstName,
+                    lastName,
+                    password: passwordHash,
+                    email,
+                    phoneNumber
+                }
+                await userCollection.insertOne(newUser) // save user in DB
+                res.status(201).json({message: 'User Successfully created'})
             }
-            await collection.insertOne({ newUser }) // save user in DB
-            res.status(201).json({message: 'User Successfully created'})
-       }
+
+        } else {
+            res.status(400).json({error: "Email already exists"})
+        }
     } catch(err) {
         console.log(err);
     }
