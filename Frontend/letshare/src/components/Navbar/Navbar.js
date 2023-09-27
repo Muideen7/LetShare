@@ -25,11 +25,11 @@ const Navbar = ({ hamActive, setHamActive }) => {
             <Link to="/" className={`${styles.nav} center`}>
               HOME
             </Link>
-            <Link to="/about" className={`${styles.nav} center`}>
+            <Link to="/programs" className={`${styles.nav} center`}>
               ABOUT
             </Link>
-            <Link to="/services" className={`${styles.nav} center`}>
-              SERVICES
+            <Link to="/questions" className={`${styles.nav} center`}>
+              QUESTIONS
             </Link>
           </div>
           <div>
