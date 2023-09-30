@@ -8,6 +8,3 @@ const root = createRoot(document.getElementById('root'));
 
 // Use the root instance to render your app
 root.render(<App />);
-
-
-
