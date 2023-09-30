@@ -1,15 +1,28 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Form, Grid, Header, Select, Icon } from "semantic-ui-react";
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Select,
+  Icon,
+  Message,
+} from "semantic-ui-react";
+import "axios";
+import axios from "axios";
 
 const Signup = () => {
   const [isBusiness, setIsBusiness] = useState(false);
+  const [message, setMessage] = useState(null);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     businessName: "",
+    website: "",
+    category: "",
     city: "",
     phoneNumber: "",
   });
@@ -18,9 +31,29 @@ const Signup = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform registration logic here, using formData and isBusiness to differentiate between user and business registration
+    const data = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phoneNumber: formData.phoneNumber,
+      password: formData.password,
+      businessName: formData.businessName,
+      website: formData.website,
+      city: formData.city,
+      category: formData.category
+    };
+    await axios
+      .post("http://localhost:5000/register", data)
+      .then((res) => {
+        console.log(res);
+        setMessage(res.data["message"]);
+      })
+      .catch((err) => {
+        setMessage(err.response.data["error"]);
+        console.log(err.response.data["error"]);
+      });
   };
 
   const options = [
@@ -36,6 +69,8 @@ const Signup = () => {
       container
     >
       <Grid.Column style={{ maxWidth: "450px" }}>
+        {message ? <Message info> {message} </Message> : null}
+
         <Header
           as="h2"
           textAlign="center"
@@ -50,46 +85,126 @@ const Signup = () => {
             onChange={() => setIsBusiness(!isBusiness)}
             style={{ marginBottom: "16px" }}
           />
-          <Form.Group widths="equal">
-            <Form.Input
-              fluid
-              icon="user"
-              iconPosition="left"
-              placeholder="First name"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleInputChange}
-            />
-            <Form.Input
-              fluid
-              icon="user"
-              iconPosition="left"
-              placeholder="Last name"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
-          <Form.Input
-            fluid
-            icon="mail"
-            iconPosition="left"
-            placeholder="E-mail address"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-          />
-          <Form.Input
-            fluid
-            icon="lock"
-            iconPosition="left"
-            placeholder="Password"
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleInputChange}
-          />
-          {isBusiness && (
+          {!isBusiness ? (
+            <>
+              <Form.Input
+                fluid
+                icon="building"
+                iconPosition="left"
+                placeholder="Business name"
+                name="businessName"
+                value={formData.businessName}
+                onChange={handleInputChange}
+              />
+              <Form.Input
+                fluid
+                icon="building"
+                iconPosition="left"
+                placeholder="Website url"
+                name="website"
+                value={formData.website}
+                onChange={handleInputChange}
+              />
+              <Form.Input
+                fluid
+                icon="map marker alternate"
+                iconPosition="left"
+                placeholder="City"
+                name="city"
+                value={formData.city}
+                onChange={handleInputChange}
+              />
+              <Form.Input
+                fluid
+                icon="mail"
+                iconPosition="left"
+                placeholder="E-mail address"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+              />
+              <Form.Input
+                fluid
+                icon="category"
+                iconPosition="left"
+                placeholder="Category"
+                name="category"
+                value={formData.category}
+                onChange={handleInputChange}
+              />
+              <Form.Input
+                fluid
+                icon="phone"
+                iconPosition="left"
+                placeholder="Phone number"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+              />
+              <Form.Input
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Password"
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+              />
+            </>
+          ) : (
+            <>
+              <Form.Group widths="equal">
+                <Form.Input
+                  fluid
+                  icon="user"
+                  iconPosition="left"
+                  placeholder="First name"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                />
+                <Form.Input
+                  fluid
+                  icon="user"
+                  iconPosition="left"
+                  placeholder="Last name"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Input
+                fluid
+                icon="mail"
+                iconPosition="left"
+                placeholder="E-mail address"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+              />
+              <Form.Input
+                fluid
+                icon="phone"
+                iconPosition="left"
+                placeholder="Phone number"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+              />
+              <Form.Input
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Password"
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+              />{" "}
+            </>
+          )}
+          {/* {isBusiness && (
             <>
               <Form.Input
                 fluid
@@ -119,7 +234,7 @@ const Signup = () => {
                 onChange={handleInputChange}
               />
             </>
-          )}
+          )} */}
           <Button
             type="submit"
             color="green" // Change button color to green

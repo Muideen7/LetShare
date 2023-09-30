@@ -1,25 +1,29 @@
 /*
     Module that defines the Router middleware to handle each endpoint
 */
+/* eslint-disable */
+
+import BusinessController from '../models/BusinessController';
+import UserController from '../models/UserController';
+import FileController from '../models/FileController';
+import AuthController from '../auth/AuthController';
 
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 const router = express.Router();
-const AuthController = require('../auth/AuthController');
 const { verifyToken } = require('../auth/Auth');
-import BusinessController from '../models/BusinessController';
-import UserController from '../models/UserController';
 
 router.use(cors());
 router.use(express.json());
 router.use(cookieParser());
 
-router.post('/register', AuthController.register);
 router.post('/login', AuthController.login);
-router.get('/business', verifyToken, BusinessController.getBusiness)
-router.post('/files', verfiyToken, FileController.PostFile)
-router.get('/user', verifyToken, UserController.getUser)
+router.post('/register', AuthController.register);
+router.get('/business', verifyToken, BusinessController.getBusiness);
+router.post('/files', verifyToken, FileController.postFile);
+router.get('/user', verifyToken, UserController.getUser);
 
-module.exports = router;
+
+export default router;
