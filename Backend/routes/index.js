@@ -19,6 +19,7 @@ router.use(cookieParser());
 router.post('/register', AuthController.register);
 router.post('/login', AuthController.login);
 router.get('/business', verifyToken, BusinessController.getBusiness)
+router.post('/files', verfiyToken, FileController.PostFile)
 router.get('/user', verifyToken, UserController.getUser)
 
 module.exports = router;
