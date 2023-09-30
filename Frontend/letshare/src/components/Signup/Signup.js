@@ -1,106 +1,143 @@
 import React, { useState } from "react";
-import styles from "./Signup.module.css"; // Import your CSS module
+import { Link } from "react-router-dom";
+import { Button, Form, Grid, Header, Select, Icon } from "semantic-ui-react";
 
 const Signup = () => {
-  const [userType, setUserType] = useState("user");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [website, setWebsite] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [isBusiness, setIsBusiness] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    businessName: "",
+    city: "",
+    phoneNumber: "",
+  });
 
-  const handleSignup = (e) => {
-    e.preventDefault();
-
-    // Here, you can implement your signup logic.
-    // Typically, you would send a request to your backend to create a new user.
-
-    console.log("User Type:", userType);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Company Name:", companyName);
-    console.log("Website:", website);
-    console.log("Phone Number:", phoneNumber);
-
-    // Reset the form fields
-    setUserType("user");
-    setEmail("");
-    setPassword("");
-    setCompanyName("");
-    setWebsite("");
-    setPhoneNumber("");
+  const handleInputChange = (e, { name, value }) => {
+    setFormData({ ...formData, [name]: value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Perform registration logic here, using formData and isBusiness to differentiate between user and business registration
+  };
+
+  const options = [
+    { key: "user", text: "User", value: false },
+    { key: "business", text: "Business", value: true },
+  ];
+
   return (
-    <div className={styles["signup-container"]}>
-      <h2>Create Your Account</h2>
-      <form onSubmit={handleSignup}>
-        <div className={styles["form-group"]}>
-          <label>User Type</label>
-          <select
-            value={userType}
-            onChange={(e) => setUserType(e.target.value)}
-          >
-            <option value="user">User</option>
-            <option value="business">Business</option>
-          </select>
-        </div>
-        <div className={styles["form-group"]}>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+    <Grid
+      textAlign="center"
+      style={{ height: "100vh" }}
+      verticalAlign="middle"
+      container
+    >
+      <Grid.Column style={{ maxWidth: "450px" }}>
+        <Header
+          as="h2"
+          textAlign="center"
+          image="/assets/logo_square.svg"
+          content="Sign up for your account"
+          style={{ marginBottom: "32px" }}
+        />
+        <Form size="large" onSubmit={handleSubmit}>
+          <Select
+            placeholder="Select account type"
+            options={options}
+            onChange={() => setIsBusiness(!isBusiness)}
+            style={{ marginBottom: "16px" }}
           />
-        </div>
-        <div className={styles["form-group"]}>
-          <label>Password</label>
-          <input
+          <Form.Group widths="equal">
+            <Form.Input
+              fluid
+              icon="user"
+              iconPosition="left"
+              placeholder="First name"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleInputChange}
+            />
+            <Form.Input
+              fluid
+              icon="user"
+              iconPosition="left"
+              placeholder="Last name"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+          <Form.Input
+            fluid
+            icon="mail"
+            iconPosition="left"
+            placeholder="E-mail address"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+          <Form.Input
+            fluid
+            icon="lock"
+            iconPosition="left"
+            placeholder="Password"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
           />
-        </div>
-        {userType === "business" && (
-          <>
-            <div className={styles["form-group"]}>
-              <label>Company Name</label>
-              <input
-                type="text"
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
-                required
+          {isBusiness && (
+            <>
+              <Form.Input
+                fluid
+                icon="building"
+                iconPosition="left"
+                placeholder="Business name"
+                name="businessName"
+                value={formData.businessName}
+                onChange={handleInputChange}
               />
-            </div>
-            <div className={styles["form-group"]}>
-              <label>Website</label>
-              <input
-                type="text"
-                value={website}
-                onChange={(e) => setWebsite(e.target.value)}
-                required
+              <Form.Input
+                fluid
+                icon="map marker alternate"
+                iconPosition="left"
+                placeholder="City"
+                name="city"
+                value={formData.city}
+                onChange={handleInputChange}
               />
-            </div>
-            <div className={styles["form-group"]}>
-              <label>Phone Number</label>
-              <input
-                type="tel"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                required
+              <Form.Input
+                fluid
+                icon="phone"
+                iconPosition="left"
+                placeholder="Phone number"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
               />
-            </div>
-          </>
-        )}
-        <button type="submit">Sign Up</button>
-      </form>
-      <div className={styles["oauth-buttons"]}>
-        <button className={styles.google}>Sign Up with Google</button>
-        <button className={styles.icloud}>Sign Up with iCloud</button>
-      </div>
-    </div>
+            </>
+          )}
+          <Button
+            type="submit"
+            color="green" // Change button color to green
+            fluid
+            size="large"
+            style={{ marginBottom: "16px" }}
+          >
+            Sign up
+          </Button>
+          <Button color="google plus" fluid size="large">
+            <Icon name="google" /> Sign up with Google
+          </Button>
+        </Form>
+        <p>
+          Already a member? <Link to="/login">Sign in</Link>
+        </p>
+      </Grid.Column>
+    </Grid>
   );
 };
 

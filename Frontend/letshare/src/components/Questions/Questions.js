@@ -11,15 +11,15 @@ const Questions = () => {
         </div>
         <div className={`${styles.QuestionsList} center`}>
           {questions.map(({ question, answer }) => {
-            return (
-              <Accordion
-                isUpper={true}
-                title={question}
-                content={answer}
-                iconOpen="plus"
-                iconClose="minus"
-              />
-            );
+           return (
+            <Accordion
+              isUpper={true}
+              title={question}
+              content={<p className={styles.answer}>{answer}</p>} 
+              iconOpen="plus"
+              iconClose="minus"
+            />
+          );
           })}
         </div>
       </div>

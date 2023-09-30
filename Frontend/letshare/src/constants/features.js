@@ -4,20 +4,20 @@ export const features = [
     description:
       "LetShare provides a platform for restaurants to easily connect with charity homes, reducing food waste and supporting those in need.",
     image:
-      "https://d2guulkeunn7d8.cloudfront.net/assets/homepage/how_it_works-163dcc1c8f91c63d7b0bdb648b5370a89267d54c8cb90bd858495395b8a9e5f3.jpg",
+      "https://images.unsplash.com/photo-1592861956120-e524fc739696?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
   },
   {
     feature: "Efficient Food Redistribution",
     description:
       "Our system efficiently manages food excess and specific requirements, ensuring that surplus food reaches those who need it most.",
     image:
-      "https://d2guulkeunn7d8.cloudfront.net/assets/homepage/real_time_updates-8330ec94f4d8006c6732bb2f65141e3596dcd3be02b0bf0376dcf5e2895fe37e.jpg",
+      "https://images.unsplash.com/photo-1498579397066-22750a3cb424?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
   },
   {
     feature: "Supporting Communities Worldwide",
     description:
       "LetShare is committed to connecting restaurants and charity homes in over 100 cities across the world, making a global impact.",
     image:
-      "https://d2guulkeunn7d8.cloudfront.net/assets/homepage/same_day_delivery-a00a9a59cbdfc41e7449cbdd04c12d27303284bef1a8fe957ec2a0112a70d7e7.jpg",
+      "https://plus.unsplash.com/premium_photo-1677507951327-9ffe920dd675?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
   },
 ];

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-// Components import
+import 'semantic-ui-css/semantic.min.css';
 import Navbar from "./components/Navbar/Navbar";
 import NavbarResponsive from "./components/NavbarResponsive/NavbarResponsive";
 import Programs from "./components/Programs/Programs";
@@ -15,7 +14,6 @@ import { partner } from "./constants/partner";
 import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
 import Home from "./pages/Home";
-// import Dashboard from "./components/Dashboard/Dashboard";
 
 const App = () => {
   const [hamActive, setHamActive] = useState(false);
@@ -27,16 +25,10 @@ const App = () => {
         <NavbarResponsive hamActive={hamActive} />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/features" element={<Features />} /> */}
-          {/* <Route path="/growth" element={<Growth />} /> */}
-          {/* <Route path="/questions" element={<Questions />} /> */}
           <Route path="/programs/user" element={<Programs programs={programs_user} />} />
           <Route path="/programs/shopper" element={<Programs programs={partner} />} />
-
-          {/* Add routes for signup, login, and dashboard */}
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         </Routes>
         <Footer />
       </div>

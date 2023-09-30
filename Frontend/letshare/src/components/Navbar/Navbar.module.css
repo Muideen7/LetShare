@@ -52,8 +52,8 @@
 
 .signup {
   padding: 0.7rem 1.1rem;
-  border-radius: 50px;
-  background: #0aad0a;
+  border-radius: 15px;
+  background: green;
   color: white;
   font-weight: bold;
   font-size: 18px;
@@ -162,7 +162,7 @@
   border: none;
   outline: none;
   font-size: 1rem;
-}
+} 
 
 .open {
   display: flex;

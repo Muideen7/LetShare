@@ -1,4 +1,5 @@
 import styles from "../Navbar/Navbar.module.css";
+import { Link } from "react-router-dom";
 
 const NavbarResponsive = ({ hamActive }) => {
   return (
@@ -6,27 +7,21 @@ const NavbarResponsive = ({ hamActive }) => {
       <div className={styles.navResInner}>
         <ul className={`${styles.navResLinks}`}>
           <li>
-            <a href="/" className={`${styles.navR} center`}>
-              Departments
-            </a>
+            <Link to="/" className={`${styles.navR} center`}>
+              Home
+            </Link>
           </li>
           <li>
-            <a href="/" className={`${styles.navR} center`}>
-              More ways to shop
-            </a>
+            <Link to="/features" className={`${styles.navR} center`}>
+              Features
+            </Link>
           </li>
           <li>
-            <a href="/" className={`${styles.navR} center`}>
-              Help
-            </a>
+            <Link to="/questions" className={`${styles.navR} center`}>
+              Questions
+            </Link>
           </li>
         </ul>
-        <select className={styles.navRdropDown} name="" id="">
-          <span className="flag-icon flag-icon-us"></span>{" "}
-          <option value="US">United States</option>
-          <span className="flag-icon flag-icon-in"></span>{" "}
-          <option value="IN">India </option>
-        </select>
       </div>
     </div>
   );

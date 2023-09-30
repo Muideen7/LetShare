@@ -25,8 +25,8 @@ const Navbar = ({ hamActive, setHamActive }) => {
             <Link to="/" className={`${styles.nav} center`}>
               HOME
             </Link>
-            <Link to="/programs" className={`${styles.nav} center`}>
-              ABOUT
+            <Link to="/features" className={`${styles.nav} center`}>
+              FEATURES
             </Link>
             <Link to="/questions" className={`${styles.nav} center`}>
               QUESTIONS
