@@ -62,6 +62,7 @@ const Signup = () => {
   ];
 
   return (
+    // RESTRUCTURE THE SELECT OPTION FOR USER AND BUSINESS, THERES IS SOME KIND OG BUG WHILE SWITCHING
     <Grid
       textAlign="center"
       style={{ height: "100vh" }}
