@@ -9,7 +9,7 @@ export const growth = [
   },
   {
     field: "50,000+ meals",
-    description: "shared with those in need to prevenent hunger and food wastage",
+    description: "shared with those in need to prevent hunger and food wastage",
   },
   {
     field: "100+ cities",

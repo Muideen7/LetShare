@@ -237,7 +237,7 @@ const Signup = () => {
           )} */}
           <Button
             type="submit"
-            color="green" // Change button color to green
+            color="green" 
             fluid
             size="large"
             style={{ marginBottom: "16px" }}
