@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom or your routing library
+import Features from '../Features/Features';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -35,13 +36,13 @@ function Navigation() {
           <Link to="/" className="text-sm font-semibold leading-6 text-gray-900">
             Home
           </Link>
-          <Link to="/features" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link to="/features"  className="text-sm font-semibold leading-6 text-gray-900">
             Features
           </Link>
           <Link to="/team" className="text-sm font-semibold leading-6 text-gray-900">
             Team
           </Link>
-          <Link to="/faqs" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link to="/faq" className="text-sm font-semibold leading-6 text-gray-900">
             FAQs
           </Link>
         </div>
