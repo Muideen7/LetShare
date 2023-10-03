@@ -1,3 +1,4 @@
+/* eslint-disable */
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
