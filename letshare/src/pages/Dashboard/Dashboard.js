@@ -17,10 +17,14 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
-import Chart from './Chart';
+import { mainListItems, secondaryListItems } from "./Listitems";
+// import { Chart } from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Import Link from React Router
+
+
 
 function Copyright(props) {
   return (
@@ -86,11 +90,35 @@ const defaultTheme = createTheme();
 
 export default function Dashboard() {
   const [open, setOpen] = React.useState(true);
+  const [auth, setAuth] = React.useState(false);
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+
+  const navigateLog = useNavigate();
+
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  React.useEffect(()=> {
+   axios.get('http://localhost:5000/user')
+   .then((res) => {
+    console.log(res)
+    if(res.status === 200){
+      setAuth(true);
+      setName(res.data[0]['firstName']);
+      setEmail(res.data[0]['email']);
+    }
+   })
+   .catch(err => {
+    console.log(err);
+   })
+
+  }, []);
+  
 
   return (
+    <>
+    {auth ? 
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
@@ -162,6 +190,8 @@ export default function Dashboard() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <h2>Welcome back {name}, </h2>
+            <p>Your email is {email} </p>
             <Grid container spacing={3}>
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
@@ -173,7 +203,7 @@ export default function Dashboard() {
                     height: 240,
                   }}
                 >
-                  <Chart />
+                  {/* <Chart /> */}
                 </Paper>
               </Grid>
               {/* Recent Deposits */}
@@ -200,6 +230,7 @@ export default function Dashboard() {
           </Container>
         </Box>
       </Box>
-    </ThemeProvider>
+    </ThemeProvider> : <> <h2>Unathorized, Please login</h2> <Link to="/"><button >Login here</button></Link>  </>}
+    </>
   );
 }

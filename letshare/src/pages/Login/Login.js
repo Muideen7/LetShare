@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from React Router
+import { Link, useNavigate } from "react-router-dom"; // Import Link from React Router
 import { Button, Message } from "semantic-ui-react";
 
 function Login() {
@@ -10,6 +10,7 @@ function Login() {
   });
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,6 +22,9 @@ function Login() {
 
   async function handleLogin(e) {
     e.preventDefault();
+    axios.defaults.withCredentials = true;
+    setLoading(true);
+
     const data = {
       email: formData.email,
       password: formData.password,
@@ -29,6 +33,14 @@ function Login() {
       const response = await axios
         .post("http://localhost:5000/login", data)
         .then((res) => {
+          if(res.data.message === "User Login Successful"){
+            navigate('/dashboard');
+
+          }else if (res.data.message === "Business Login Successful"){
+            navigate('/dashboard')
+          }else{
+            setMessage(res.data["error"]);
+          }
           console.log(res);
           setMessage(res.data["message"]);
         })
@@ -116,7 +128,7 @@ function Login() {
 
             <div>
               <Button
-              loading={loading}
+                loading={loading}
                 primary
                 onClick={handleLogin}
                 content="Login"

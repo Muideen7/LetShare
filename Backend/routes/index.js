@@ -15,7 +15,13 @@ const cookieParser = require('cookie-parser');
 const router = express.Router();
 const { verifyToken } = require('../auth/Auth');
 
-router.use(cors());
+router.use(cors(
+    {
+        origin: ["http://localhost:3000"],
+        methods: ["POST, GET"],
+        credentials: true,
+    }
+));
 router.use(express.json());
 router.use(cookieParser());
 

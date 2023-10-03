@@ -9,7 +9,7 @@ import Features from './components/Features/Features';
 import Team from './components/Teams/Team';
 import Questions from './components/Questions/Questions';
 import 'semantic-ui-css/semantic.min.css'
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
   return (
