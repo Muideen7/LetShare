@@ -9,6 +9,7 @@ import Features from './components/Features/Features';
 import Team from './components/Teams/Team';
 import Questions from './components/Questions/Questions';
 import 'semantic-ui-css/semantic.min.css'
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/features" element={<Features />} />
       <Route path="/team" element={<Team />} />
       <Route path="/faq" element={<Questions />} />
