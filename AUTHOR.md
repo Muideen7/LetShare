@@ -15,8 +15,8 @@
 3. Oluwatosin Osukoya
    - Email: oluwatosindorcas68@gmail.com
    - GitHub: [GitHub](https://github.com/yourgithubusername)
-   - Twitter: [Twitter](https://twitter.com/yourtwitterusername)
-   - LinkedIn: [LinkedIn](https://www.linkedin.com/in/yourlinkedinusername)
+   - Twitter: [Twitter](https://twitter.com/Oluwa_Tosyno)
+   - LinkedIn: [LinkedIn](https://www.linkedin.com/in/oluwatosin-dorcas)
 
 4. Owoyemi Idris Halfboyfriend
    - Email: owoyemiidrisolamilekan@gmail.com
