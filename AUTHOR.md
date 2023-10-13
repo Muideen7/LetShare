@@ -21,6 +21,6 @@
 4. Owoyemi Idris Halfboyfriend
    - Email: owoyemiidrisolamilekan@gmail.com
    - GitHub: [GitHub](https://github.com/halfboyfriend)
-   - Twitter: [Twitter](https://twitter.com/yourtwitterusername)
-   - LinkedIn: [LinkedIn](https://www.linkedin.com/in/yourlinkedinusername)
+   - Twitter: [Twitter](https://twitter.com/Devoid_Sol)
+   - LinkedIn: [LinkedIn](https://www.linkedin.com/in/owoyemi-idris-703913245)
 
